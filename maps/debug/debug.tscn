@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://chikbwtknvw6y"]
+[gd_scene load_steps=5 format=3 uid="uid://chikbwtknvw6y"]
 
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_v38m1"]
+[ext_resource type="PackedScene" uid="uid://r1hy4k5v6p4s" path="res://player/player.tscn" id="2_13w21"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_10gyi"]
 size = Vector3(11.341797, 1, 7.0039063)
@@ -24,9 +25,15 @@ size = Vector3(11.356445, 0.54589844, 6.975586)
 material = SubResource("StandardMaterial3D_gjbnb")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9725235, 0)
+top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("1_v38m1")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="Player" parent="." instance=ExtResource("2_13w21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9725235, 0)

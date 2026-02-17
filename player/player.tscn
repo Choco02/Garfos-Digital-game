@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://r1hy4k5v6p4s"]
+
+[ext_resource type="Texture2D" uid="uid://kquuqgsgm6s8" path="res://icon.svg" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://donqhk27nau2m" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_qjkh3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
+height = 1.3779297
+
+[sub_resource type="Resource" id="Resource_g6k8r"]
+script = ExtResource("4_qjkh3")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_rkbax")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_rkbax")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("1_oul6g")
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.97663856, 0.21488875, 0, -0.21488875, 0.97663856, 0, 1.3774971, 3.1696668)
+script = ExtResource("3_yw30f")
+tween_resource = SubResource("Resource_g6k8r")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
