@@ -15,6 +15,14 @@ run/main_scene="uid://chikbwtknvw6y"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
