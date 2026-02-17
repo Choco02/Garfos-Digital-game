@@ -1,3 +1,32 @@
-[gd_scene format=3 uid="uid://chikbwtknvw6y"]
+[gd_scene load_steps=4 format=3 uid="uid://chikbwtknvw6y"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_v38m1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_10gyi"]
+size = Vector3(11.341797, 1, 7.0039063)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjbnb"]
+albedo_color = Color(0.2981217, 0.48827678, 0.15769207, 1)
 
 [node name="Debug" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03936553, -0.15107632, -0.633441)
+shape = SubResource("BoxShape3D_10gyi")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03936553, 0.0386135, -0.633441)
+size = Vector3(11.356445, 0.54589844, 6.975586)
+material = SubResource("StandardMaterial3D_gjbnb")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_v38m1")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
