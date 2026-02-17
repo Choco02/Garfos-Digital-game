@@ -1,0 +1,34 @@
+name: "Exportar e Criar Release"
+on:
+  push:
+    tags:
+      - 'v*' # O robô só trabalha quando você criar uma tag com "v" (ex: v1.0)
+
+jobs:
+  export_game:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    name: Exportar Jogo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+      - name: Exportar Godot
+        id: export
+        uses: firebelley/godot-export@v7.0.0
+        with:
+          # Links exatos para o Godot 4.5.1
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_export_templates.tpz
+          relative_project_path: ./
+          archive_output: true
+
+      - name: create release
+        uses: ncipollo/release-action@v1.18.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          generateReleaseNotes: true
+          tag: ${{ github.ref_name }}
+          artifacts: ${{ steps.export.outputs.archive_directory }}/*
