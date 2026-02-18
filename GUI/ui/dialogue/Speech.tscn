@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf2kfpgy81cgg"]
+
+[ext_resource type="Script" uid="uid://brueqja3x2gs6" path="res://GUI/ui/dialogue/speech.gd" id="1_egj2t"]
+
+[node name="Speech" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_egj2t")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -38.5
+offset_right = 37.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "teste"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "a"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
