@@ -18,10 +18,15 @@ script = ExtResource("1_rkbax")
 shape = SubResource("CapsuleShape3D_rkbax")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+shaded = true
+alpha_cut = 1
 texture = ExtResource("1_oul6g")
 
 [node name="PhantomCamera3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.97663856, 0.21488875, 0, -0.21488875, 0.97663856, 0, 1.3774971, 3.1696668)
+visible = false
 script = ExtResource("3_yw30f")
+priority = 1
 tween_resource = SubResource("Resource_g6k8r")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
