@@ -28,6 +28,10 @@ func _physics_process(delta: float) -> void:
 	# TODO - separar a captura de input em um script separado
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction.x == -1.0:
+		$Sprite3D.flip_h = false
+	elif direction.x == 1.0:
+		$Sprite3D.flip_h = true
 	if direction:
 		state = State.WALK
 		velocity.x = direction.x * SPEED
