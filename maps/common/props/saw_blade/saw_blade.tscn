@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://drufd0rfp02ml"]
+
+[ext_resource type="Script" uid="uid://cg60luo2n8op2" path="res://maps/common/props/saw_blade/saw_blade.gd" id="1_j5squ"]
+[ext_resource type="Texture2D" uid="uid://kquuqgsgm6s8" path="res://icon.svg" id="2_v7vsv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_75t88"]
+size = Vector3(1, 1, 0.3359375)
+
+[node name="SawBlade" type="Node3D"]
+
+[node name="SawBlade" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.4398452, 0.8980736, 0, -0.8980736, 0.4398452, -1.82854, 0, 0)
+script = ExtResource("1_j5squ")
+degree_per_frame = 720
+horizontal_movement = 2.0
+time_speed = 3.0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SawBlade"]
+shape = SubResource("BoxShape3D_75t88")
+
+[node name="Sprite3D" type="Sprite3D" parent="SawBlade"]
+transform = Transform3D(0.50170034, 0.86812985, 0, -0.86812985, 0.50170034, 0, 0, 0, 1.0000024, 0, 0, 0)
+texture = ExtResource("2_v7vsv")
+
+[node name="Timer" type="Timer" parent="SawBlade"]
+one_shot = true
+
+[connection signal="timeout" from="SawBlade/Timer" to="SawBlade" method="_on_timer_timeout"]
