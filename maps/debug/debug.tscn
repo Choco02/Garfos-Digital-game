@@ -19,7 +19,7 @@ albedo_color = Color(0.2981217, 0.48827678, 0.15769207, 1)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.6639252, 0.74779695, 0, -0.74779695, 0.6639252, 0, 7.2463007, 5.663925)
+transform = Transform3D(1, 0, 0, 0, 0.6639262, 0.7477981, 0, -0.7477981, 0.6639262, 0, 7.2463007, 5.663925)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
@@ -81,4 +81,4 @@ size = Vector3(11.356445, 0.54589844, 6.975586)
 material = SubResource("StandardMaterial3D_gjbnb")
 
 [node name="Caixa" parent="." instance=ExtResource("5_xlxbn")]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 2, -0.7734418, 0.68892366, 0.6016152)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6217378, 0.68892366, 0.6016152)
