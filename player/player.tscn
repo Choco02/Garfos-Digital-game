@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_qjkh3"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
-height = 1.3779297
+[sub_resource type="BoxShape3D" id="BoxShape3D_yw30f"]
+size = Vector3(0.7402954, 1.3795166, 0.25427246)
 
 [sub_resource type="Resource" id="Resource_g6k8r"]
 script = ExtResource("4_qjkh3")
@@ -15,12 +15,11 @@ script = ExtResource("4_qjkh3")
 script = ExtResource("1_rkbax")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_rkbax")
+shape = SubResource("BoxShape3D_yw30f")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.07660445, 0.06427877, 0, -0.06427877, 0.07660445, -0.053548276, 0.18611765, -0.63234377)
 flip_h = true
-billboard = 1
 shaded = true
 alpha_cut = 1
 texture = ExtResource("2_yw30f")
