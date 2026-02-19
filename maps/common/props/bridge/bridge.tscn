@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://bu6rj5t7xlwrk"]
+
+[ext_resource type="Script" uid="uid://2gkhae16dkq0" path="res://maps/common/props/bridge/bridge.gd" id="1_ksbb5"]
+[ext_resource type="Texture2D" uid="uid://2teltpas6ncc" path="res://maps/common/props/bridge/provisory_bridge.png" id="2_vcltn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bdej4"]
+size = Vector3(1.9960938, 1, 4.442383)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vcltn"]
+load_path = "res://.godot/imported/provisory_bridge.png-7da3eb9b89b41f74fe5c0f7d15e17013.s3tc.ctex"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vcltn"]
+size = Vector3(2.1376953, 0.12011719, 4.571289)
+
+[sub_resource type="Animation" id="Animation_1anbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DisabledSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.7, 1.533, 0.392)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DisabledSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.7109966, 2.8015634e-09)]
+}
+
+[sub_resource type="Animation" id="Animation_vcltn"]
+resource_name = "activate_bridge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DisabledSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.7, 1.533, 0.392), Vector3(0, 1.533, 0.392)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DisabledSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.7109966, 2.8015634e-09), Vector3(-1.0796779, -0.7109966, 2.8015634e-09)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1anbv"]
+_data = {
+&"RESET": SubResource("Animation_1anbv"),
+&"activate_bridge": SubResource("Animation_vcltn")
+}
+
+[node name="Bridge" type="StaticBody3D"]
+script = ExtResource("1_ksbb5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bdej4")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, -6.700956e-08, 0.392, 0, -1.533, -1.7134864e-08, 0, -0.9603092, 4.197645e-08)
+texture = ExtResource("2_vcltn")
+
+[node name="DisabledSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, -6.700956e-08, 0.392, 0, -1.533, -1.7134864e-08, 0, -0.7109966, 2.8015634e-09)
+transparent = false
+texture = SubResource("CompressedTexture2D_vcltn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.76490545, 0)
+shape = SubResource("BoxShape3D_vcltn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1anbv")
+}
