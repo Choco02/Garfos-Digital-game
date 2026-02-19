@@ -3,6 +3,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const DASH_SPEED = 10.0 # Arth: Adicionada constante para a força do dash
 const DASH_DURATION = 0.25 # Arth: Adicionada constante para a duração do dash
+const PUSH_FORCE = 10 # Arth: Adicionada constante para a força do empurrão na caixa
 
 enum State {
 	IDLE,
@@ -29,6 +30,16 @@ func _physics_process(delta: float) -> void:
 		velocity.z = dash_dir.z * DASH_SPEED
 		velocity.y = 0 
 		move_and_slide()
+		# Arth: Adicionado loop de colisão durante o dash para empurrar objetos RigidBody3D
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision.get_collider() is RigidBody3D:
+				# Arth: Zerando o eixo Y para não empurrar a caixa para baixo/cima
+				var push_dir = -collision.get_normal()
+				push_dir.y = 0
+				push_dir = push_dir.normalized()
+				# Arth: Multiplicado por delta para estabilizar a física durante o dash
+				collision.get_collider().apply_central_impulse(push_dir * (PUSH_FORCE * 2.0) * delta * 10.0)
 		return
 
 	# Add the gravity.
@@ -74,3 +85,19 @@ func _physics_process(delta: float) -> void:
 		state = State.ATTACK
 
 	move_and_slide()
+	
+	# Arth: Adicionado loop após o move_and_slide comum para empurrar caixas (RigidBody3D)
+	# Arth: O uso do -collision.get_normal() garante que o empurrão seja na direção oposta ao impacto, evitando que o player "agarre" na caixa
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		if collider is RigidBody3D:
+			# Arth: Zerando o eixo Y do impacto para a caixa não subir/descer e prender o jogador
+			var push_dir = -collision.get_normal()
+			push_dir.y = 0
+			push_dir = push_dir.normalized()
+			
+			# Arth: Só empurra se o jogador estiver realmente andando (direction) na direção da caixa (dot > 0)
+			if direction != Vector3.ZERO and push_dir.dot(direction) > 0:
+				# Arth: Uso do delta para converter um pulso instantâneo em uma força contínua e suave
+				collider.apply_central_impulse(push_dir * PUSH_FORCE * delta * 10.0)
