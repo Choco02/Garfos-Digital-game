@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv7a7jyxlojtl"]
+
+[ext_resource type="Script" uid="uid://cg1l7dnque70q" path="res://player/items/stamps/time/time.gd" id="1_c6ys8"]
+
+[node name="Time" type="Area3D"]
+script = ExtResource("1_c6ys8")
