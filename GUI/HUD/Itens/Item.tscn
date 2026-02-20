@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccfh4y8bchlcj"]
+
+[ext_resource type="Script" uid="uid://bgvqhmhgoia8f" path="res://GUI/HUD/Itens/item.gd" id="1_4xtl4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b8utf"]
+
+[node name="Item" type="PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_bottom = -648.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_b8utf")
+script = ExtResource("1_4xtl4")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer"]
+texture_filter = 6
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
