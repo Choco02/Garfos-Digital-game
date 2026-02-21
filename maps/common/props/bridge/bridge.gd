@@ -10,4 +10,4 @@ func interact():
 	if activated: return
 	activated = true
 	$AnimationPlayer.play("activate_bridge")
-	$CollisionShape3D.disabled = true
+	$CollisionShape3D.set_deferred("disabled", true)
