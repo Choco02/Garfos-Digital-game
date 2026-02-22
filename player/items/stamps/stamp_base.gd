@@ -1,5 +1,5 @@
 @abstract class_name Stamp
-extends Area3D
+extends Item
 
 enum Types {
 	ENTITY, ## Carimba NPCs
@@ -10,6 +10,7 @@ enum Types {
 ## 0 = sem limite
 var usage_limits: int
 var type: Types
+var paint_cost: int
 
-func use():
-	push_warning("[%s] funcao nao implementada" % name)
+@abstract func use(target:Variant = null)
+	#push_warning("[%s] funcao nao implementada" % name)

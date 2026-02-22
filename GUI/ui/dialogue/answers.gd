@@ -4,12 +4,17 @@ extends VBoxContainer
 var answers_size: int = 0
 const  color_base: Color = Color.WHITE
 var styles: Array[StyleBoxFlat]
+var current_index: int = 0
 
 signal answer_choosed(index: int)
 
 func update_answers(respostas: Array[String]):
 	current_index = 0
 	var childs := get_children()
+	
+	for child in childs:
+		child.visible = true
+	
 	
 	for i in range(respostas.size()):
 		var label_dst = childs[i].get_child(0).get_child(0) as Label
@@ -31,9 +36,10 @@ func update_answers(respostas: Array[String]):
 
 func end_dialogue():
 	current_index = 0
+	
 	hide()
 
-var current_index: int = 0
+
 func _physics_process(_delta: float) -> void:
 	var old_index = current_index
 	if Input.is_action_just_pressed("ui_up"):

@@ -18,8 +18,10 @@ func inicializar(nome: String, text: String):
 	panel_container.pivot_offset.x = get_viewport_rect().size.x * 0.3 / 2.0
 	reset_size()
 	show()
+	#print("abroba")
 
 func init_dialogue(p: Phrase, target_n: String):
+	#print("Init Speech")
 	phrase = p
 	inicializar(target_n, phrase .text)
 	

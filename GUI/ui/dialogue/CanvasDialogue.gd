@@ -20,6 +20,7 @@ func _ready() -> void:
 func init_dialogue(new_dialogue: Dialogue,position: Vector3):
 	if running:
 		return
+	print("Conversa iniciou")
 	current_phrase_index = 0
 	dialogue = new_dialogue
 	fala.init_dialogue(dialogue.phrases[current_phrase_index], dialogue.target_name)

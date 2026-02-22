@@ -1,0 +1,185 @@
+[gd_scene load_steps=28 format=3 uid="uid://jko6wio4ccp2"]
+
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="1_mkwv6"]
+[ext_resource type="PackedScene" uid="uid://r1hy4k5v6p4s" path="res://player/player.tscn" id="2_42ajj"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_s0t7q"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_wvk2x"]
+[ext_resource type="Script" uid="uid://beaemnvu8u8bo" path="res://entities/NPCs/npc.gd" id="5_42ajj"]
+[ext_resource type="Texture2D" uid="uid://blo6feymvsxvd" path="res://entities/NPCs/spritetristaofinalsombra.png" id="5_mkwv6"]
+[ext_resource type="Script" uid="uid://n1bd8o0dk4f3" path="res://GUI/ui/dialogue/phrase.gd" id="6_t1128"]
+[ext_resource type="Script" uid="uid://ceouetet6iugx" path="res://GUI/ui/dialogue/dialogue.gd" id="7_jtnsc"]
+[ext_resource type="Script" uid="uid://bypci056fpqxj" path="res://GUI/ui/dialogue/response.gd" id="7_tb0jn"]
+[ext_resource type="PackedScene" uid="uid://25x1ka8xmgmp" path="res://GUI/ui/dialogue/CanvasDialogue.tscn" id="9_tb0jn"]
+[ext_resource type="PackedScene" uid="uid://dnyr1n2ioumi3" path="res://GUI/HUD/Itens/Itens.tscn" id="11_tb0jn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iijjr"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_mkwv6"]
+sky_material = SubResource("ProceduralSkyMaterial_iijjr")
+
+[sub_resource type="Environment" id="Environment_42ajj"]
+background_mode = 2
+sky = SubResource("Sky_mkwv6")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_10gyi"]
+size = Vector3(20, 0.5, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjbnb"]
+albedo_color = Color(0.2981217, 0.48827678, 0.15769207, 1)
+
+[sub_resource type="Resource" id="Resource_mgbp2"]
+script = ExtResource("4_wvk2x")
+
+[sub_resource type="Resource" id="Resource_jtnsc"]
+script = ExtResource("7_tb0jn")
+text = "Oi"
+target_index = 2
+metadata/_custom_type_script = "uid://bypci056fpqxj"
+
+[sub_resource type="Resource" id="Resource_tb0jn"]
+script = ExtResource("7_tb0jn")
+text = "kkkkkk, ala"
+target_index = 1
+metadata/_custom_type_script = "uid://bypci056fpqxj"
+
+[sub_resource type="Resource" id="Resource_kdklq"]
+script = ExtResource("6_t1128")
+text = "OI"
+answers_options = Array[ExtResource("7_tb0jn")]([SubResource("Resource_jtnsc"), SubResource("Resource_tb0jn")])
+next_index_phrase = -1
+metadata/_custom_type_script = "uid://n1bd8o0dk4f3"
+
+[sub_resource type="Resource" id="Resource_k8vco"]
+script = ExtResource("7_tb0jn")
+text = "x1"
+target_index = -1
+metadata/_custom_type_script = "uid://bypci056fpqxj"
+
+[sub_resource type="Resource" id="Resource_rslxo"]
+script = ExtResource("6_t1128")
+text = "Pq voce é assim"
+answers_options = Array[ExtResource("7_tb0jn")]([SubResource("Resource_k8vco")])
+next_index_phrase = -1
+metadata/_custom_type_script = "uid://n1bd8o0dk4f3"
+
+[sub_resource type="Resource" id="Resource_kvon2"]
+script = ExtResource("6_t1128")
+text = "=)"
+next_index_phrase = -1
+metadata/_custom_type_script = "uid://n1bd8o0dk4f3"
+
+[sub_resource type="Resource" id="Resource_m2ccq"]
+script = ExtResource("7_jtnsc")
+target_name = "Bobiuson"
+phrases = Array[ExtResource("6_t1128")]([SubResource("Resource_kdklq"), SubResource("Resource_rslxo"), SubResource("Resource_kvon2")])
+metadata/_custom_type_script = "uid://ceouetet6iugx"
+
+[sub_resource type="BoxMesh" id="BoxMesh_tb0jn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_42ajj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jtnsc"]
+size = Vector3(2, 2, 2)
+
+[node name="Debug" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.79086053, 0.6119965, 0, -0.6119965, 0.79086053, 0, 6.587778, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_42ajj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_10gyi")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D"]
+size = Vector3(20, 0.5, 20)
+material = SubResource("StandardMaterial3D_gjbnb")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.76167405, 0.6479603, 0, -0.6479603, 0.76167405, 0, 7.620484, 5.761674)
+top_level = true
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("1_mkwv6")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="CanvasDialogue" parent="." instance=ExtResource("9_tb0jn")]
+
+[node name="Player" parent="." instance=ExtResource("2_42ajj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9725235, 0)
+
+[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(1, 0, 0, 0, 0.76167405, 0.6479603, 0, -0.6479603, 0.76167405, 0, 7.620484, 5.761674)
+top_level = true
+script = ExtResource("3_s0t7q")
+follow_mode = 5
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_mgbp2")
+tween_on_load = false
+follow_offset = Vector3(0, 5, 5)
+follow_damping = true
+follow_damping_value = Vector3(0.2, 0.2, 0.2)
+dead_zone_width = 0.2
+dead_zone_height = 0.02
+_preview_noise = false
+noise_emitter_layer = 1
+align_transform_with_view = Callable()
+align_position_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="PhantomCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.93892014, -0.34413496, 0, 0.34413496, 0.93892014, 0, -1.58621, -0.22414494)
+shadow_enabled = true
+shadow_bias = 0.4
+spot_range = 12.2298975
+spot_angle = 40.602673
+
+[node name="NPC" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3206387, 2.2132893, -5.727429)
+collision_mask = 3
+script = ExtResource("5_42ajj")
+conversa = SubResource("Resource_m2ccq")
+
+[node name="Ponto do Dialogo" type="Node3D" parent="NPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NPC/Ponto do Dialogo"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("BoxMesh_tb0jn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28167295, 0)
+shape = SubResource("CapsuleShape3D_42ajj")
+
+[node name="Sprite3D" type="Sprite3D" parent="NPC"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+billboard = 1
+shaded = true
+alpha_cut = 1
+texture = ExtResource("5_mkwv6")
+
+[node name="interagivel" type="Area3D" parent="NPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC/interagivel"]
+shape = SubResource("BoxShape3D_jtnsc")
+
+[node name="Itens" parent="." instance=ExtResource("11_tb0jn")]
+
+[node name="Carimbados" type="Node3D" parent="."]
+
+[connection signal="body_entered" from="NPC/interagivel" to="NPC" method="_on_interagivel_body_entered"]
+[connection signal="body_exited" from="NPC/interagivel" to="NPC" method="_on_interagivel_body_exited"]

@@ -1,3 +1,4 @@
+class_name ItensHUD
 extends Control
 
 @onready var v_container: VBoxContainer = $PanelContainer/VBoxContainer
@@ -10,7 +11,7 @@ func _ready() -> void:
 	for i in node_itens:
 		itens.push_back(i as ItemHUD)
 	current_index = 0
-	range_visible = 0
+	range_visible = 3
 	update_itens()
 	
 
@@ -45,12 +46,14 @@ func _process(_delta: float) -> void:
 		update_itens()
 
 func push_item() -> void:
+	range_visible = clamp(range_visible + 1, 0, itens.size())
+	update_itens()
+
+func pop_item() -> void:
 	range_visible = clamp(range_visible - 1, 0, itens.size())
 	if current_index >= range_visible:
 		current_index = range_visible - 1
-
-func pop_item() -> void:
-	range_visible = clamp(range_visible + 1, 0, itens.size())
+	update_itens()
 
 enum ItemEnum {
 	NONE,

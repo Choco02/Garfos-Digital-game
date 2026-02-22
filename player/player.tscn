@@ -1,25 +1,174 @@
-[gd_scene load_steps=7 format=3 uid="uid://r1hy4k5v6p4s"]
+[gd_scene load_steps=29 format=3 uid="uid://r1hy4k5v6p4s"]
 
 [ext_resource type="Script" uid="uid://donqhk27nau2m" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://d2r34rumh6iqo" path="res://player/rigamimi3.png" id="2_yw30f"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_qjkh3"]
+[ext_resource type="Texture2D" uid="uid://befiwu5487aub" path="res://player/sprite-shee-correndo-pra-baixo.png" id="5_boad6"]
+[ext_resource type="Texture2D" uid="uid://tc0ukxnrfuhr" path="res://player/carimbando-lolcal.png" id="5_rgyib"]
+[ext_resource type="Texture2D" uid="uid://cje0ps0j6y73x" path="res://player/sprite-sheet-correndo-de-lado.png" id="6_rgyib"]
+[ext_resource type="Texture2D" uid="uid://da5bgund4c45p" path="res://player/correndo-pra-cima.png" id="7_hg6s5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
-height = 1.3779297
+margin = 0.0
+radius = 0.3
 
 [sub_resource type="Resource" id="Resource_g6k8r"]
 script = ExtResource("4_qjkh3")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg6s5"]
+atlas = ExtResource("5_rgyib")
+region = Rect2(0, 0, 1958, 2015)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7qer"]
+atlas = ExtResource("5_rgyib")
+region = Rect2(1958, 0, 1958, 2015)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4c7l"]
+atlas = ExtResource("5_rgyib")
+region = Rect2(3916, 0, 1958, 2015)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8t03j"]
+atlas = ExtResource("5_boad6")
+region = Rect2(0, 0, 1958, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ieo8"]
+atlas = ExtResource("5_boad6")
+region = Rect2(1958, 0, 1958, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebec5"]
+atlas = ExtResource("5_boad6")
+region = Rect2(3916, 0, 1958, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yllr7"]
+atlas = ExtResource("5_boad6")
+region = Rect2(5874, 0, 1958, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb6p2"]
+atlas = ExtResource("2_yw30f")
+region = Rect2(0, 0, 1881, 2431)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wodsf"]
+atlas = ExtResource("6_rgyib")
+region = Rect2(0, 0, 1958, 2009)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32hag"]
+atlas = ExtResource("6_rgyib")
+region = Rect2(1958, 0, 1958, 2009)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqiix"]
+atlas = ExtResource("6_rgyib")
+region = Rect2(3916, 0, 1958, 2009)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7oew"]
+atlas = ExtResource("6_rgyib")
+region = Rect2(5874, 0, 1958, 2009)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c35mf"]
+atlas = ExtResource("7_hg6s5")
+region = Rect2(0, 0, 1958, 1940)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65viv"]
+atlas = ExtResource("7_hg6s5")
+region = Rect2(1958, 0, 1958, 1940)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7c3f"]
+atlas = ExtResource("7_hg6s5")
+region = Rect2(3916, 0, 1958, 1940)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjvpn"]
+atlas = ExtResource("7_hg6s5")
+region = Rect2(5874, 0, 1958, 1940)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s7qer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg6s5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7qer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4c7l")
+}],
+"loop": false,
+"name": &"carimbando",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8t03j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ieo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebec5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yllr7")
+}],
+"loop": true,
+"name": &"down_move",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb6p2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wodsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32hag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqiix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7oew")
+}],
+"loop": true,
+"name": &"side_move",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c35mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65viv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7c3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjvpn")
+}],
+"loop": true,
+"name": &"up_move",
+"speed": 7.0
+}]
+
+[sub_resource type="SphereMesh" id="SphereMesh_rgyib"]
+
 [node name="Player" type="CharacterBody3D"]
+collision_mask = 3
 script = ExtResource("1_rkbax")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_rkbax")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-flip_h = true
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1, 0)
+visible = false
 billboard = 1
 shaded = true
 alpha_cut = 1
@@ -32,3 +181,25 @@ script = ExtResource("3_yw30f")
 priority = 1
 tween_resource = SubResource("Resource_g6k8r")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 0)
+billboard = 1
+shaded = true
+alpha_cut = 1
+sprite_frames = SubResource("SpriteFrames_s7qer")
+animation = &"carimbando"
+frame = 1
+frame_progress = 0.13142408
+
+[node name="StampTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.5)
+
+[node name="Marker3D" type="Marker3D" parent="StampTarget"]
+
+[node name="RayCast3D" type="RayCast3D" parent="StampTarget"]
+collision_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StampTarget"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("SphereMesh_rgyib")
